@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-obsidian: #0A0A0F;
+  --color-charcoal: #12121A;
+  --color-slate: #1E1E2E;
+  --color-slate-light: #2A2A3E;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8C97E;
+  --color-teal: #4ECDC4;
+  --color-red: #FF4757;
+  --color-green: #2ED573;
+  --color-amber: #FFA502;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-obsidian);
+  color: #E8E8F0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-charcoal); }
+::-webkit-scrollbar-thumb { background: var(--color-slate-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* Selection */
+::selection { background: rgba(201, 168, 76, 0.3); }
+
+/* Glass card */
+.glass {
+  background: rgba(30, 30, 46, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A84C, #E8C97E, #C9A84C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(90deg, var(--color-slate) 25%, var(--color-slate-light) 50%, var(--color-slate) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Timer pulse for warning */
+.timer-warning {
+  animation: timerPulse 1s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { color: #FFA502; }
+  50% { color: #FF4757; }
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Glow effects */
+.glow-gold { box-shadow: 0 0 20px rgba(201, 168, 76, 0.3); }
+.glow-teal { box-shadow: 0 0 20px rgba(78, 205, 196, 0.3); }
+.glow-red { box-shadow: 0 0 20px rgba(255, 71, 87, 0.3); }
+
+/* Interview input */
+.interview-textarea {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: #E8E8F0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  resize: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.interview-textarea:focus {
+  outline: none;
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+}
+
+.interview-textarea::placeholder {
+  color: rgba(232, 232, 240, 0.3);
+}
