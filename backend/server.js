@@ -13,7 +13,14 @@ const app = express();
 const PORT = process.env.PORT || 5002;
 
 // ── Middleware ──────────────────────────────────────────────────────────────
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ 
+  origin: [
+    "http://localhost:3000", 
+    "https://ai-agent-frontend-9yzd7evy3-superman0612s-projects.vercel.app",
+    process.env.FRONTEND_URL
+  ].filter(Boolean), 
+  credentials: true 
+}));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
